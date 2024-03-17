@@ -1,6 +1,6 @@
-# Go Template
+# go-oauth2
 
-Simple golang project template
+Authentication using google
 
 ## Table of Contents
 
