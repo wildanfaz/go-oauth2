@@ -1,6 +1,7 @@
 package auth
 
 import (
+	"encoding/json"
 	"io"
 	"net/http"
 
@@ -46,6 +47,15 @@ func (s *ImplementServices) GoogleCallback(c echo.Context) error {
 			WithMessage("Failed to read user info"))
 	}
 
+	data := make(map[string]interface{})
+
+	err = json.Unmarshal(userInfo, &data)
+	if err != nil {
+		s.log.Errorln("Failed to unmarshal user info:", err)
+		return c.JSON(http.StatusBadRequest, resp.AsError().
+			WithMessage("Failed to unmarshal user info"))
+	}
+
 	return c.JSON(http.StatusOK, resp.WithMessage("Success").
-		WithData(string(userInfo)))
+		WithData(data))
 }
