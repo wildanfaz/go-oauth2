@@ -1,40 +1,31 @@
 package routers
 
 import (
-	"fmt"
-
 	"github.com/labstack/echo/v4"
 	"github.com/wildanfaz/go-template/configs"
-	"github.com/wildanfaz/go-template/internal/constants"
 	"github.com/wildanfaz/go-template/internal/pkg"
-	"github.com/wildanfaz/go-template/internal/repositories"
-	books_router "github.com/wildanfaz/go-template/internal/routers/books-router"
-	"github.com/wildanfaz/go-template/internal/services/books"
+	oauth2_router "github.com/wildanfaz/go-template/internal/routers/oauth2-router"
+	"github.com/wildanfaz/go-template/internal/services/auth"
 	"github.com/wildanfaz/go-template/internal/services/health"
 )
 
 func InitEchoRouter() {
-	fmt.Println(constants.Blue, "---Init Echo Router---")
-
 	// configs
 	config := configs.InitConfig()
-	dbMySql := configs.InitMySql(config.DatabaseDSN)
 
 	// pkg
 	log := pkg.InitLogger()
 
-	// repositories
-	booksRepo := repositories.NewBooksRepository(dbMySql)
-
 	// services
-	_ = books.NewService(booksRepo, log, config)
+	authServices := auth.New(config, log)
 
 	e := echo.New()
 
 	apiV1 := e.Group("/api/v1")
 	apiV1.GET("/health", health.HealthCheck)
 
-	books_router.BooksRouter(apiV1)
+	auth := apiV1.Group("/auth")
+	oauth2_router.Oauth2Router(auth, authServices)
 
 	e.Logger.Fatal(e.Start(config.AppPort))
 }

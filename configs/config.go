@@ -12,6 +12,9 @@ type Config struct {
 	JWTSecretKey []byte
 	JWTDuration  time.Duration
 	DatabaseDSN  string
+	ClientID     string
+	ClientSecret string
+	RedirectURL  string
 }
 
 func InitConfig() *Config {
@@ -30,5 +33,8 @@ func InitConfig() *Config {
 		JWTSecretKey: []byte(config.GetString("jwt.secret_key")),
 		JWTDuration:  config.GetDuration("jwt.duration"),
 		DatabaseDSN:  config.GetString("database.mysql_dsn"),
+		ClientID:     config.GetString("oauth.google.client_id"),
+		ClientSecret: config.GetString("oauth.google.client_secret"),
+		RedirectURL:  config.GetString("oauth.google.redirect_url"),
 	}
 }
