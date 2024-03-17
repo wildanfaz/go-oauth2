@@ -4,7 +4,7 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/wildanfaz/go-template/configs"
 	"github.com/wildanfaz/go-template/internal/pkg"
-	oauth2_router "github.com/wildanfaz/go-template/internal/routers/oauth2-router"
+	auth_router "github.com/wildanfaz/go-template/internal/routers/auth-router"
 	"github.com/wildanfaz/go-template/internal/services/auth"
 	"github.com/wildanfaz/go-template/internal/services/health"
 )
@@ -25,7 +25,7 @@ func InitEchoRouter() {
 	apiV1.GET("/health", health.HealthCheck)
 
 	auth := apiV1.Group("/auth")
-	oauth2_router.Oauth2Router(auth, authServices)
+	auth_router.AuthRouter(auth, authServices)
 
 	e.Logger.Fatal(e.Start(config.AppPort))
 }
