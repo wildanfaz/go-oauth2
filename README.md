@@ -36,13 +36,13 @@ Authentication using google
 3. Clone the repository
 
     ```bash
-    git clone https://github.com/wildanfaz/go-template.git
+    git clone https://github.com/wildanfaz/go-oauth2.git
     ```
 
 4. Change to the project directory
 
     ```bash
-    cd go-template
+    cd go-oauth2
     ```
 
 ## Usage

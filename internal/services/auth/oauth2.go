@@ -3,7 +3,7 @@ package auth
 import (
 	"github.com/labstack/echo/v4"
 	"github.com/sirupsen/logrus"
-	"github.com/wildanfaz/go-template/configs"
+	"github.com/wildanfaz/go-oauth2/configs"
 	"golang.org/x/oauth2"
 	"golang.org/x/oauth2/google"
 )

@@ -2,7 +2,7 @@ package auth_router
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/wildanfaz/go-template/internal/services/auth"
+	"github.com/wildanfaz/go-oauth2/internal/services/auth"
 )
 
 func AuthRouter(g *echo.Group, authServices auth.Services) {

@@ -1,4 +1,4 @@
-module github.com/wildanfaz/go-template
+module github.com/wildanfaz/go-oauth2
 
 go 1.22.0
 

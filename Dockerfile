@@ -15,7 +15,7 @@ RUN go mod download
 COPY . .
 
 # Build the Go application
-RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o go-template .
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o go-oauth2 .
 
 # Stage 2: Create a minimal image
 FROM alpine:latest
@@ -24,10 +24,10 @@ FROM alpine:latest
 WORKDIR /app
 
 # Copy only the compiled binary from the previous stage
-COPY --from=builder /app/go-template .
+COPY --from=builder /app/go-oauth2 .
 
 # Expose the port your application will run on
 EXPOSE 1323
 
 # Command to run the application
-CMD ["./go-template", "start"]
+CMD ["./go-oauth2", "start"]

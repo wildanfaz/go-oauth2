@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/spf13/cobra"
-	"github.com/wildanfaz/go-template/internal/routers"
+	"github.com/wildanfaz/go-oauth2/internal/routers"
 )
 
 func InitCmd(ctx context.Context) {

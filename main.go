@@ -4,7 +4,7 @@ import (
 	"context"
 
 	_ "github.com/joho/godotenv/autoload"
-	"github.com/wildanfaz/go-template/cmd"
+	"github.com/wildanfaz/go-oauth2/cmd"
 )
 
 func main() {

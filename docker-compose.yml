@@ -10,7 +10,7 @@ services:
       - ./migrations:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: go-template
+      MYSQL_DATABASE: go-oauth2
     ports:
       - "3306:3306"
 
@@ -19,12 +19,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: go-template
+    container_name: go-oauth2
     restart: always
     depends_on:
       - mysql
     environment:
       ECHO_PORT: ":1323"
-      MYSQL_DSN: "root:secret@tcp(host.docker.internal:3306)/go-template?parseTime=true"
+      MYSQL_DSN: "root:secret@tcp(host.docker.internal:3306)/go-oauth2?parseTime=true"
     ports:
       - "1323:1323"

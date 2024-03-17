@@ -2,11 +2,11 @@ package routers
 
 import (
 	"github.com/labstack/echo/v4"
-	"github.com/wildanfaz/go-template/configs"
-	"github.com/wildanfaz/go-template/internal/pkg"
-	auth_router "github.com/wildanfaz/go-template/internal/routers/auth-router"
-	"github.com/wildanfaz/go-template/internal/services/auth"
-	"github.com/wildanfaz/go-template/internal/services/health"
+	"github.com/wildanfaz/go-oauth2/configs"
+	"github.com/wildanfaz/go-oauth2/internal/pkg"
+	auth_router "github.com/wildanfaz/go-oauth2/internal/routers/auth-router"
+	"github.com/wildanfaz/go-oauth2/internal/services/auth"
+	"github.com/wildanfaz/go-oauth2/internal/services/health"
 )
 
 func InitEchoRouter() {
