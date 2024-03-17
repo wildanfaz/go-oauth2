@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"io/ioutil"
+	"io"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -39,7 +39,7 @@ func (s *ImplementServices) GoogleCallback(c echo.Context) error {
 			WithMessage("Failed to get user info"))
 	}
 
-	userInfo, err := ioutil.ReadAll(response.Body)
+	userInfo, err := io.ReadAll(response.Body)
 	if err != nil {
 		s.log.Errorln("Failed to read user info:", err)
 		return c.JSON(http.StatusBadRequest, resp.AsError().
