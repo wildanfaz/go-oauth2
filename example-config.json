@@ -1,0 +1,13 @@
+{
+    "app" : {
+        "author" : "Muhamad Wildan Faz",
+        "port" : ":1323"
+    },
+    "oauth" : {
+        "google" : {
+            "client_id" : "YOUR_CLIENT_ID",
+            "client_secret" : "YOUR_CLIENT_SECRET",
+            "redirect_url" : "http://localhost:1323/api/v1/auth/google/callback"
+        }
+    }
+}
